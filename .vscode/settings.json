@@ -1,0 +1,29 @@
+
+{
+    /* Place these rules into your VS Code settings.json file */
+    "files.associations": {
+        "*.css": "postcss" /* use PostCSS syntax for .css files; may want to set this per workspace instead of per user */
+    },
+    "stylelint.enable": true,
+    "stylelint.autoFixOnSave": true,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "postcss.validate": false,
+    "editor.formatOnPaste": true,
+    "prettier.eslint": true, // may not work anymore
+    "prettier.stylelint": true, // may not work anymore
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[css]": {
+        "editor.formatOnSave": true,
+    },
+    "textlint.autoFixOnSave": true,
+    "workbench.colorTheme": "Cobalt2",
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "deepscan.enable": true
+}
