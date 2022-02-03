@@ -1,3 +1,136 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+    "cy": true,
+    "Cypress": true,
+    "ENV": true
+  },
+  "plugins": [
+    "jsx-a11y",
+    "prettier",
+    "jest-dom",
+    "simple-import-sort",
+    "testing-library",
+    "import"
+  ],
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "prettier",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none",
+        "ignoreRestSiblings": true,
+        "varsIgnorePattern": "_"
+      }
+    ],
+    "curly": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-fallthrough": [
+      "warn",
+      {
+        "commentPattern": "break[\\s\\w]*omitted"
+      }
+    ],
+    "no-irregular-whitespace": [
+      "warn",
+      {
+        "skipTemplates": true
+      }
+    ],
+    "no-sparse-arrays": "off",
+    "jsx-a11y/aria-role": [
+      "error",
+      {
+        "ignoreNonDOM": true
+      }
+    ],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/no-onchange": "off",
+    "prettier/prettier": "error",
+    "react/jsx-fragments": [
+      "warn",
+      "syntax"
+    ],
+    "react/no-deprecated": "warn",
+    "react/prop-types": "off",
+    "react/no-unknown-property": "error",
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          {
+            "char": "'",
+            "alternatives": [
+              "’"
+            ]
+          }
+        ]
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "testing-library/no-await-sync-events": "error",
+    "testing-library/no-manual-cleanup": "error",
+    "testing-library/prefer-explicit-assert": "error",
+    "testing-library/prefer-presence-queries": "error",
+    "testing-library/prefer-screen-queries": "error",
+    "testing-library/no-wait-for-multiple-assertions": "off",
+    "testing-library/no-container": "off",
+    "testing-library/no-node-access": "off",
+    "testing-library/render-result-naming-convention": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "cypress/e2e/**/*.spec.js",
+        "cypress/old-e2e/**/*.spec.js"
+      ],
+      "rules": {
+        "testing-library/prefer-presence-queries": "off",
+        "testing-library/prefer-screen-queries": "off",
+        "testing-library/await-async-utils": "off",
+        "testing-library/await-async-query": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.stories.*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.spec.*"
+      ],
+      "rules": {
+        "testing-library/render-result-naming-convention": "error"
+      }
+    }
+  ]
 }
