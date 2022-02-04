@@ -1,4 +1,4 @@
-import { PostList, DUMMY_POSTS } from "components";
+import { PostList } from "components";
 import { useState, useEffect } from "react";
 
 const BlogPage = () => {
