@@ -3,7 +3,7 @@ import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
-
+  console.log({ post });
   return <Post post={post} />;
 }
 
@@ -22,8 +22,6 @@ export function getStaticProps(context) {
 
 export function getStaticPaths() {
   const postFilenames = getPostsFiles();
-  console.log(postFilenames);
-  debugger;
 
   const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
 
