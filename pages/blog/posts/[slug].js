@@ -1,5 +1,5 @@
-import { Post } from "components";
-import { getPostData, getPostsFiles } from "../../../lib/post-utils";
+// import { Post } from "components";
+// import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
