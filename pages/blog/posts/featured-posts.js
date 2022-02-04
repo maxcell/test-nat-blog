@@ -51,7 +51,8 @@ const DUMMY_POSTS = [
 export default function BlogPage() {
   return (
     <div>
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      {/* <FeaturedPosts posts={DUMMY_POSTS} /> */}
+      YOooooo
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 import {
   Image,
@@ -19,8 +20,9 @@ export default function PostBlurb(props) {
     imgPath = "https://images.nappy.co/uploads/large/21592178174kqah8td9ipie9jypo1keymszjbhqpzk0riykxxiwbcjmt6z895otlvsxe00ymauvqdxie4admvrkzwkbidhouo8xihixud4zjink.jpg?auto=format&fm=jpg&w=1280&q=75",
     altText = "hand holding a megaphone",
     slug = "test-post",
-  } = props;
-
+  } = props.post;
+  console.log("PostBlurb");
+  console.log({ props });
   const formattedDate = new Date(date).toLocaleDateString("en-us", {
     day: "numeric",
     month: "long",
@@ -31,15 +33,16 @@ export default function PostBlurb(props) {
   //   const imgPath = `/images/posts/${slug}/${image}`
   return (
     <LI>
-      <Link href={`/blog/posts/${slug}`}>
+      <Link href={`/blog/posts/${props.post.slug}`}>
         <a>
           <ImageContainer>
             <Image src={imgPath} alt={altText} />
           </ImageContainer>
           <ContentContainer>
-            <H3>{title}</H3>
+            {/* <H3>{title}</H3>
             <Time>{formattedDate}</Time>
-            <P>{excerpt}</P>
+            <P>{excerpt}</P> */}
+            <ReactMarkdown>{props.post.content}</ReactMarkdown>
           </ContentContainer>
         </a>
       </Link>
