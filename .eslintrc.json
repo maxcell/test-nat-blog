@@ -20,12 +20,9 @@
     "import"
   ],
   "extends": [
-    "react-app",
     "plugin:jsx-a11y/recommended",
     "plugin:jest-dom/recommended",
     "plugin:testing-library/react",
-    "plugin:import/errors",
-    "plugin:import/warnings",
     "prettier",
     "next/core-web-vitals"
   ],

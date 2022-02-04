@@ -8,6 +8,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "eslint-plugin-jest-dom": "^4.0.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-testing-library": "^5.0.5",
     "gray-matter": "^4.0.3",
     "next": "12.0.10",
     "prettier": "^2.5.1",
