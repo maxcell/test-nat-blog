@@ -10,8 +10,12 @@ export const ImageContainer = styled.div`
   height: 200px;
   overflow: hidden;
 `;
-export const ContentContainer = styled.div``;
-export const H3 = styled.h3``;
+export const ContentContainer = styled.div`
+  p {
+    color: hotpink;
+  }
+`;
+export const H2 = styled.h2``;
 export const LI = styled.li``;
 export const P = styled.p``;
 export const Time = styled.time`

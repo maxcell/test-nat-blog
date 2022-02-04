@@ -22,15 +22,17 @@ const getPostData = (fileName) => {
 
 exports.handler = function () {
   const postFiles = fs.readdirSync(postsDirectory);
-
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
   });
 
   // sort posts by date
-  // const sortedPosts = allPosts.sort((postA, postB) => postA.date > postB.date ? -1 : 1);
+  const sortedPosts = allPosts.sort((postA, postB) =>
+    postA.date > postB.date ? -1 : 1
+  );
+  console.log("allPosts: ", allPosts[0], sortedPosts[0]);
   return {
     statusCode: 200,
-    body: JSON.stringify(allPosts),
+    body: JSON.stringify(sortedPosts),
   };
 };

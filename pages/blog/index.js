@@ -1,7 +1,6 @@
 import { Hero, FeaturedPosts, PostList } from "components";
 import { useState, useEffect } from "react";
 // import path from "path";
-// import fs from "fs";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
@@ -14,9 +13,7 @@ export default function BlogPage() {
     };
     getPosts();
   }, []);
-  console.log("BlogPage");
-  console.log({ posts });
-  // debugger;
+  console.log("INDEX: BLOG: ", posts);
   return (
     <div>
       <Hero subText={"This is my little blog"} />

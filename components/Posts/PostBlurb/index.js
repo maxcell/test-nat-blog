@@ -6,7 +6,7 @@ import {
   Image,
   ImageContainer,
   ContentContainer,
-  H3,
+  H2,
   LI,
   P,
   Time,
@@ -21,8 +21,6 @@ export default function PostBlurb(props) {
     altText = "hand holding a megaphone",
     slug = "test-post",
   } = props.post;
-  console.log("PostBlurb");
-  console.log({ props });
   const formattedDate = new Date(date).toLocaleDateString("en-us", {
     day: "numeric",
     month: "long",
@@ -39,10 +37,13 @@ export default function PostBlurb(props) {
             <Image src={imgPath} alt={altText} />
           </ImageContainer>
           <ContentContainer>
-            {/* <H3>{title}</H3>
-            <Time>{formattedDate}</Time>
-            <P>{excerpt}</P> */}
-            <ReactMarkdown>{props.post.content}</ReactMarkdown>
+            <H2>
+              <ReactMarkdown>{title}</ReactMarkdown>
+            </H2>
+            <Time>
+              <ReactMarkdown>{formattedDate}</ReactMarkdown>
+            </Time>
+            <ReactMarkdown>{excerpt}</ReactMarkdown>
           </ContentContainer>
         </a>
       </Link>

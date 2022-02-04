@@ -10,7 +10,7 @@ function MainNav() {
             <Link href="/blog/posts">All Posts</Link>
           </li>
           <li>
-            <Link href="/blog/posts/featured-posts">Featured Posts</Link>
+            <Link href="/blog/posts/featured">Featured Posts</Link>
           </li>
         </ul>
       </nav>

@@ -26,14 +26,17 @@ exports.handler = function (event, context, callback) {
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
   });
-
+  console.log("allPosts: ", allPosts.length);
   // sort posts by date
-  // const sortedPosts = allPosts.sort((postA, postB) => postA.date > postB.date ? -1 : 1);
 
-  const featuredPosts = allPosts.filter((post) => post.isFeatured);
-
+  const featuredPosts = allPosts.filter((post) => {
+    return post.isFeatured;
+  });
+  const sortedPosts = featuredPosts.sort((postA, postB) =>
+    postA.date < postB.date ? -1 : 1
+  );
   return {
     statusCode: 200,
-    body: JSON.stringify(featuredPosts),
+    body: JSON.stringify(sortedPosts),
   };
 };

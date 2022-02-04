@@ -12,7 +12,7 @@ const BlogPage = () => {
     };
     getPosts();
   }, []);
-
+  console.log({ posts });
   return (
     <div>
       <h2>All Posts</h2>
