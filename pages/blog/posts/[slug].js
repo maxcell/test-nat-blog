@@ -1,18 +1,34 @@
 import { Post } from "components";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-export default function PostDetailPage() {
-  const router = useRouter();
+import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
-  const [post, setPost] = useState([]);
-  useEffect(() => {
-    const getPost = async () => {
-      const post = await fetch(
-        `/.netlify/functions/getPostBySlug?slug=${router.query.slug}`
-      ).then((response) => response.json());
-      setPost(post);
-    };
-    getPost();
-  }, []);
+export default function PostDetailPage(props) {
+  const { post } = props;
+
   return <Post post={post} />;
+}
+
+export function getStaticProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  const post = getPostData(slug);
+
+  return {
+    props: {
+      post,
+    },
+    revalidate: 600,
+  };
+}
+
+export function getStaticPaths() {
+  const postFilenames = getPostsFiles();
+  console.log(postFilenames);
+  debugger;
+
+  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
+
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
 }

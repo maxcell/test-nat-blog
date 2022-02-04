@@ -1,21 +1,22 @@
 import { Hero, FeaturedPosts } from "components";
 import { useState, useEffect } from "react";
+import { getFeaturedPosts } from "../../../lib/post-utils";
 
-export default function FeaturedBlogs() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const getPosts = async () => {
-      const posts = await fetch("/.netlify/functions/getFeaturedPosts").then(
-        (response) => response.json()
-      );
-      setPosts(posts);
-    };
-    getPosts();
-  }, []);
+export default function FeaturedBlogs(props) {
+  const { posts } = props;
 
   return (
     <div>
       <FeaturedPosts posts={posts.filter((_, index) => index < 4)} />
     </div>
   );
+}
+export async function getStaticProps() {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
 }

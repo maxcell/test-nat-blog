@@ -1,17 +1,8 @@
 import { PostList } from "components";
-import { useState, useEffect } from "react";
+import { getAllPosts } from "../../../lib/post-utils";
 
-const BlogPage = () => {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const getPosts = async () => {
-      const posts = await fetch("/.netlify/functions/getAllPosts").then(
-        (response) => response.json()
-      );
-      setPosts(posts);
-    };
-    getPosts();
-  }, []);
+const BlogPage = (props) => {
+  const { posts } = props;
   return (
     <div>
       <h2>All Posts</h2>
@@ -20,3 +11,13 @@ const BlogPage = () => {
   );
 };
 export default BlogPage;
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts();
+
+  return {
+    props: {
+      posts: allPosts,
+    },
+  };
+}

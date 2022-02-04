@@ -1,18 +1,8 @@
 import { Hero, FeaturedPosts } from "components";
-import { useState, useEffect } from "react";
-// import path from "path";
+import { getFeaturedPosts } from "../../lib/post-utils";
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const getPosts = async () => {
-      const posts = await fetch("/.netlify/functions/getFeaturedPosts").then(
-        (response) => response.json()
-      );
-      setPosts(posts);
-    };
-    getPosts();
-  }, []);
+export default function BlogPage(props) {
+  const { posts } = props;
   return (
     <div>
       <Hero subText={"This is my little blog"} />
@@ -21,23 +11,12 @@ export default function BlogPage() {
   );
 }
 
-// export async function getStaticProps() {
-//   const functionsDirectory = path.join(process.cwd(), "netlify/functions");
-//   const dataFilePath = path.join(functionsDirectory, "getAllPosts");
-//   const getPosts = async () => {
-//     const posts = await fetch("/.netlify/functions/getAllPosts").then(
-//       (response) => JSON.stringify(response)
-//     );
+export function getStaticProps() {
+  const featuredPosts = getFeaturedPosts();
 
-//     return Promise.all(posts);
-//   };
-//   const postsArr = getPosts();
-
-//   return {
-//     props: {
-//       posts: postsArr,
-//       fakeProp: ["so fake"],
-//       filePath: dataFilePath,
-//     },
-//   };
-// }
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
+}
