@@ -20,14 +20,14 @@ export async function getStaticProps(context) {
   };
 }
 
-export function getStaticPaths() {
-  const postFilenames = getPostsFiles();
+export async function getStaticPaths() {
+  const postFilenames = await getPostsFiles();
   console.log({ postFilenames });
 
   const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
   console.log({ slugs });
   return {
     paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: "blocking",
+    fallback: false,
   };
 }
