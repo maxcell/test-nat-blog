@@ -8,7 +8,6 @@ import {
   ContentContainer,
   H2,
   LI,
-  P,
   Time,
 } from "./styled";
 
