@@ -7,10 +7,10 @@ export default function PostDetailPage(props) {
   return <Post post={post} />;
 }
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-  const post = getPostData(slug);
+  const post = await getPostData(slug);
 
   return {
     props: {
@@ -26,7 +26,7 @@ export function getStaticPaths() {
   const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
 
   return {
-    paths: [],
-    fallback: "blocking",
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
   };
 }
