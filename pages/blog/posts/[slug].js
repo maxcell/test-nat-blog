@@ -4,11 +4,12 @@ import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 export default function PostDetailPage(props) {
   const { post } = props;
 
+  console.log(post)
   if (!post) {
     return <p>Loading</p>;
   }
 
-  return <Post post={post} />;
+  return <p>yo</p>;
 }
 
 export async function getStaticProps(context) {
