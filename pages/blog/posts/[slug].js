@@ -28,6 +28,6 @@ export function getStaticPaths() {
   console.log({ slugs });
   return {
     paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
