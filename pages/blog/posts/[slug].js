@@ -3,7 +3,7 @@ import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
-  console.log({ post });
+
   return <Post post={post} />;
 }
 
@@ -27,6 +27,6 @@ export function getStaticPaths() {
 
   return {
     paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
