@@ -1,4 +1,5 @@
-function Error({ statusCode }) {
+function Error({ statusCode, err }) {
+    console.log(err)
     return (
         <p>
             {statusCode
@@ -11,7 +12,7 @@ function Error({ statusCode }) {
 Error.getInitialProps = ({ res, err }) => {
     console.log(err)
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-    return { statusCode }
+    return { statusCode, err }
 }
 
 export default Error
