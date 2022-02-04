@@ -1,5 +1,5 @@
 import { Post } from "components";
-import { getAllPosts } from "../../../lib/post-utils";
+import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
@@ -10,9 +10,7 @@ export default function PostDetailPage(props) {
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-  const posts = await getAllPosts();
-
-  const post = posts.filter(post.slug === slug);
+  const post = await getPostData(slug);
 
   return {
     props: {
@@ -23,13 +21,13 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  // const postFilenames = await getPostsFiles();
-  // console.log({ postFilenames });
+  const postFilenames = await getPostsFiles();
+  console.log({ postFilenames });
 
-  // const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
-  // console.log({ slugs });
+  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
+  console.log({ slugs });
   return {
-    paths: [],
+    paths: slugs.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 }
