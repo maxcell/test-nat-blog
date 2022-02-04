@@ -1,17 +1,16 @@
 import { Post } from "components";
-import { getSinglePost, getPostsFiles } from "../../../lib/post-utils";
+import { getPostData, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
 
   return <Post post={post} />;
-  // return <h1>Yooooooo</h1>;
 }
 
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-  const post = await getSinglePost(slug);
+  const post = await getPostData(slug);
 
   return {
     props: {
