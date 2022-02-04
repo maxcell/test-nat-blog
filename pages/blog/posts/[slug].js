@@ -30,6 +30,6 @@ export async function getStaticPaths() {
   // console.log({ slugs });
   return {
     paths: [],
-    // fallback: false,
+    fallback: false,
   };
 }
