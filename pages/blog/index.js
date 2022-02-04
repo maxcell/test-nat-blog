@@ -1,4 +1,4 @@
-import { Hero, FeaturedPosts, PostList } from "components";
+import { Hero, FeaturedPosts } from "components";
 import { useState, useEffect } from "react";
 // import path from "path";
 
@@ -13,11 +13,9 @@ export default function BlogPage() {
     };
     getPosts();
   }, []);
-  console.log("INDEX: BLOG: ", posts);
   return (
     <div>
       <Hero subText={"This is my little blog"} />
-      {/* <PostList posts={posts} /> */}
       <FeaturedPosts posts={posts.filter((_, index) => index < 4)} />
     </div>
   );

@@ -4,19 +4,16 @@ const path = require("path");
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
-exports.handler = function () {
+exports.handler = function (event) {
+  const { slug } = event.queryStringParameters;
   const postFiles = fs.readdirSync(postsDirectory);
-  const allPosts = postFiles.map((postFile) => {
+  const posts = postFiles.map((postFile) => {
     return getPostData(postFile);
   });
 
-  // sort posts by date
-  const sortedPosts = allPosts.sort((postA, postB) =>
-    postA.date < postB.date ? -1 : 1
-  );
-
+  const post = posts.filter((p) => p.slug === slug)[0];
   return {
     statusCode: 200,
-    body: JSON.stringify(sortedPosts),
+    body: JSON.stringify(post),
   };
 };
