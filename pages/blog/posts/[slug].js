@@ -1,5 +1,5 @@
 import { Post } from "components";
-import { getPostData, getPostsFiles } from "../../../lib/post-utils";
+import { getAllPosts, getPostsFiles } from "../../../lib/post-utils";
 
 export default function PostDetailPage(props) {
   const { post } = props;
@@ -10,7 +10,8 @@ export default function PostDetailPage(props) {
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-  const post = await getPostData(slug);
+  const posts = await getAllPosts(slug);
+  const post = posts.filter((post) => post.slug === slug)[0];
 
   return {
     props: {
