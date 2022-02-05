@@ -15,7 +15,7 @@ export default function PostDetailPage(props) {
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-  const post = getPostData(slug);
+  const post = await getPostData(slug);
 
   console.log({ onPage: post })
   return {
